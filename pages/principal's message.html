@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Principal's Message</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #6a11cb;
+            --secondary: #2575fc;
+            --accent: #ff7e5f;
+            --light: #f9f9f9;
+            --dark: #333;
+            --success: #27ae60;
+            --warning: #f39c12;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 40px;
+            background-attachment: fixed;
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+        }
+        
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 0;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            border-radius: 0 0 10px 10px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+        }
+        
+        h2 {
+            position: relative;
+            font-weight: 300;
+            letter-spacing: 1px;
+        }
+        
+        .logo-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .logo {
+            width: 80px;
+            height: 80px;
+            background-color: #fff;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 15px rgba(0,0,0,0.2);
+            animation: pulse 2s infinite;
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        
+        .logo i {
+            font-size: 40px;
+            color: var(--primary);
+        }
+        
+        .principal-image-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+            perspective: 1000px;
+        }
+        
+        .principal-image {
+            width: 500px;
+            height: 500px;
+            border-radius: 10px;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            transition: all 0.5s ease;
+            transform-style: preserve-3d;
+        }
+        
+        .principal-image:hover {
+            transform: rotateY(5deg) rotateX(5deg) scale(1.02);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+        }
+        
+        .message-section {
+            background: linear-gradient(to bottom, #ffffff, #f0f8ff);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .message-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: var(--accent);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(30%, -30%);
+        }
+        
+        .message-section::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 150px;
+            height: 150px;
+            background: var(--secondary);
+            opacity: 0.1;
+            border-radius: 50%;
+            transform: translate(-30%, 30%);
+        }
+        
+        .section-title {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 25px;
+            text-align: center;
+            font-weight: bold;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+        }
+        
+        .principal-message {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 25px;
+            text-align: justify;
+            position: relative;
+        }
+        
+        .principal-message p {
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s forwards;
+        }
+        
+        .principal-message p:nth-child(1) { animation-delay: 0.2s; }
+        .principal-message p:nth-child(2) { animation-delay: 0.4s; }
+        .principal-message p:nth-child(3) { animation-delay: 0.6s; }
+        .principal-message p:nth-child(4) { animation-delay: 0.8s; }
+        .principal-message p:nth-child(5) { animation-delay: 1s; }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .values-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            margin: 30px 0;
+        }
+        
+        .value-card {
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            border-radius: 10px;
+            padding: 25px;
+            width: 30%;
+            min-width: 250px;
+            margin: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .value-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, var(--accent), var(--warning));
+            z-index: 2;
+        }
+        
+        .value-card:hover {
+            transform: translateY(-10px) scale(1.03);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        }
+        
+        .value-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover i {
+            color: var(--accent);
+            transform: scale(1.2) rotate(5deg);
+        }
+        
+        .value-title {
+            font-weight: bold;
+            color: var(--secondary);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+            transition: all 0.3s ease;
+        }
+        
+        .value-card:hover .value-title {
+            color: var(--accent);
+        }
+        
+        .principal-signature {
+            text-align: right;
+            font-weight: bold;
+            margin-top: 30px;
+            font-style: italic;
+            color: var(--primary);
+            font-size: 1.2rem;
+            opacity: 0;
+            animation: fadeInRight 1s 1.2s forwards;
+            position: relative;
+        }
+        
+        .principal-signature::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: 110%;
+            width: 100px;
+            height: 2px;
+            background: linear-gradient(to right, transparent, var(--accent));
+        }
+        
+        @keyframes fadeInRight {
+            from { opacity: 0; transform: translateX(50px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            background: linear-gradient(to right, #ff7e5f, #feb47b);
+            color: white;
+            margin-top: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,128C960,96,1056,96,1152,117.3C1248,139,1344,181,1392,202.7L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 15px;
+            position: relative;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            transition: all 0.3s ease;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+            backdrop-filter: blur(5px);
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .social-links a:nth-child(1):hover { background: #3b5998; }
+        .social-links a:nth-child(2):hover { background: #1da1f2; }
+        .social-links a:nth-child(3):hover { background: #e4405f; }
+        .social-links a:nth-child(4):hover { background: #0077b5; }
+        .social-links a:nth-child(5):hover { background: #ff0000; }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--accent);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 1000;
+        }
+        
+        .back-to-top.show {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            background: var(--primary);
+        }
+        
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+            
+            .message-section {
+                padding: 25px;
+            }
+            
+            .principal-image {
+                width: 100%;
+                height: auto;
+                max-width: 400px;
+            }
+            
+            .value-card {
+                width: 100%;
+            }
+            
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 40px;
+                height: 40px;
+                font-size: 16px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .principal-image {
+                max-width: 300px;
+            }
+            
+            .message-section::before,
+            .message-section::after {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <div class="logo">
+                    <i class="fas fa-graduation-cap"></i>
+                </div>
+            </div>
+            <h1>PRINCIPAL OF DHANALAKSHMI SRINIVASAN</h1>
+            <h2>College of Engineering and Technology</h2>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="principal-image-container">
+            <img src="../images/principal.jpg" alt="Principal's Image" class="principal-image">
+        </div>
+        
+        <div class="message-section">
+            <div class="section-title">
+                PRINCIPAL'S MESSAGE
+            </div>
+            
+            <div class="principal-message">
+                <p>Welcome to Dhanalakshmi Srinivasan College of Engineering and Technology (DSCET)—an institution dedicated to shaping future-ready professionals and leaders in Engineering and Management.</p>
+                
+                <p>Our vision is to be a world-class center of advanced learning, research, and innovation, preparing students to meet national and global standards. At DSCET, education is not just about knowledge transfer—it is about nurturing talent, fostering creativity, and building confidence to face the challenges of tomorrow.</p>
+                
+                <p>We take pride in our modern infrastructure, state-of-the-art facilities, committed faculty, and outcome-based teaching methods. Our academic ecosystem is designed to provide industry-relevant knowledge, hands-on training, and real-world exposure, ensuring that our graduates are equipped with both competence and character.</p>
+                
+                <div class="values-container">
+                    <div class="value-card">
+                        <i class="fas fa-lightbulb"></i>
+                        <div class="value-title">Innovative</div>
+                        <p>Progress comes from fresh ideas and bold thinking</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-target"></i>
+                        <div class="value-title">Relevant</div>
+                        <p>Preparing students to address pressing societal needs</p>
+                    </div>
+                    <div class="value-card">
+                        <i class="fas fa-seedling"></i>
+                        <div class="value-title">Sustainable</div>
+                        <p>Endurance and adaptability ensure growth in a changing world</p>
+                    </div>
+                </div>
+                
+                <p>Beyond academics, our vibrant campus life fosters cultural harmony, creativity, and holistic growth. Located in Mamallapuram—a historic center of art and culture—our students find themselves in an environment that inspires learning, exploration, and excellence.</p>
+                
+                <p>Dear students, I encourage you to dream big, think differently, and work with determination. At DSCET, you will not only build your career but also shape yourself into a responsible individual ready to contribute meaningfully to society and the world.</p>
+                
+                <div class="principal-signature">
+                    – Dr. SURESH G.R., M.E., Ph.D.<br>Principal
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 DHANALAKSHMI SRINIVASAN Trust. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+    
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Back to top button functionality
+        const backToTopButton = document.querySelector('.back-to-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 300) {
+                backToTopButton.classList.add('show');
+            } else {
+                backToTopButton.classList.remove('show');
+            }
+        });
+        
+        backToTopButton.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+        
+        // Add subtle animation to value cards on scroll
+        const valueCards = document.querySelectorAll('.value-card');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.animation = 'fadeIn 1s forwards';
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.2
+        });
+        
+        valueCards.forEach(card => {
+            card.style.opacity = 0;
+            observer.observe(card);
+        });
+    </script>
+</body>
+</html>
+
+

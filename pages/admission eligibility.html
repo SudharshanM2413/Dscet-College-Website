@@ -1,0 +1,783 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admission Eligibility - Dhanalakshmi Srinivasan College</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #1a5276;
+            --secondary: #2e86c1;
+            --accent: #ff9a00;
+            --light: #f9f9f9;
+            --dark: #333;
+            --shadow: 0 4px 20px rgba(0,0,0,0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f9f9f9 0%, #e6f0ff 100%);
+            color: var(--dark);
+            line-height: 1.6;
+            min-height: 100vh;
+            padding-bottom: 40px;
+            overflow-x: hidden;
+        }
+        
+        /* Preloader */
+        #preloader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--light);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(26, 82, 118, 0.2);
+            border-radius: 50%;
+            border-top: 5px solid var(--primary);
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Navigation */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 15px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+        
+        .navbar.scrolled {
+            padding: 10px 5%;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo img {
+            height: 50px;
+        }
+        
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            position: relative;
+            transition: var(--transition);
+        }
+        
+        .nav-links a:after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .nav-links a:hover:after {
+            width: 100%;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--primary);
+            border-radius: 5px;
+            transition: var(--transition);
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            padding-top: 100px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 50px 0;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            margin-bottom: 40px;
+            box-shadow: var(--shadow);
+            border-radius: 0 0 15px 15px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+            position: relative;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .header-subtitle {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            position: relative;
+            animation: fadeInUp 1s ease 0.3s forwards;
+            opacity: 0;
+        }
+        
+        .accent-bar {
+            height: 6px;
+            width: 100px;
+            background: linear-gradient(to right, var(--accent), #ff6a00);
+            margin: 15px auto;
+            border-radius: 3px;
+            position: relative;
+            animation: growWidth 1s ease 0.5s forwards;
+            opacity: 0;
+            transform: scaleX(0);
+            transform-origin: center;
+        }
+        
+        @keyframes growWidth {
+            from {
+                opacity: 0;
+                transform: scaleX(0);
+            }
+            to {
+                opacity: 1;
+                transform: scaleX(1);
+            }
+        }
+        
+        .trust-name {
+            font-size: 2.2rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            text-align: center;
+            font-weight: bold;
+            padding-bottom: 15px;
+            border-bottom: 2px solid var(--secondary);
+            position: relative;
+        }
+        
+        .trust-name:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .eligibility-section {
+            background: linear-gradient(to bottom, #ffffff, #f0f8ff);
+            padding: 50px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            margin-bottom: 40px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .eligibility-section:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, var(--accent), var(--primary));
+        }
+        
+        .program {
+            margin-bottom: 40px;
+            padding: 30px;
+            border-radius: 10px;
+            background: white;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+        
+        .program:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: var(--secondary);
+            transition: var(--transition);
+        }
+        
+        .program:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .program:hover:before {
+            background: var(--accent);
+            width: 7px;
+        }
+        
+        .program:last-child {
+            margin-bottom: 0;
+        }
+        
+        .program-title {
+            font-size: 1.6rem;
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            position: relative;
+            padding-left: 40px;
+        }
+        
+        .program-title i {
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-size: 1.8rem;
+            transition: var(--transition);
+        }
+        
+        .program:hover .program-title i {
+            color: var(--accent);
+            transform: scale(1.1);
+        }
+        
+        .program-content {
+            font-size: 1.1rem;
+            line-height: 1.8;
+            margin-bottom: 15px;
+            text-align: justify;
+        }
+        
+        .program-content p {
+            margin-bottom: 15px;
+        }
+        
+        .program-content ul {
+            margin-left: 30px;
+            margin-bottom: 15px;
+        }
+        
+        .program-content li {
+            margin-bottom: 8px;
+            position: relative;
+            padding-left: 20px;
+        }
+        
+        .program-content li:before {
+            content: '•';
+            color: var(--accent);
+            font-weight: bold;
+            position: absolute;
+            left: 0;
+        }
+        
+        .note {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--secondary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .note:before {
+            content: '!';
+            position: absolute;
+            left: -15px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px;
+            height: 30px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            color: white;
+            margin-top: 50px;
+            border-radius: 15px;
+            box-shadow: var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        footer:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.05' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+            background-position: bottom;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+            position: relative;
+        }
+        
+        .social-links a {
+            color: white;
+            font-size: 24px;
+            transition: var(--transition);
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: rgba(255,255,255,0.1);
+        }
+        
+        .social-links a:hover {
+            transform: translateY(-5px) scale(1.1);
+            background: rgba(255,255,255,0.2);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .back-to-top {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--primary);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            cursor: pointer;
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 999;
+        }
+        
+        .back-to-top.active {
+            opacity: 1;
+            visibility: visible;
+        }
+        
+        .back-to-top:hover {
+            background: var(--secondary);
+            transform: translateY(-5px);
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInUp {
+            from { 
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from { 
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                padding: 15px;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: white;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 40px;
+                transition: var(--transition);
+                box-shadow: var(--shadow);
+            }
+            
+            .nav-links.active {
+                left: 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+            
+            .trust-name {
+                font-size: 1.8rem;
+            }
+            
+            .eligibility-section {
+                padding: 30px;
+            }
+            
+            .program {
+                padding: 20px;
+            }
+        }
+        
+        @media (max-width: 576px) {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .header-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .trust-name {
+                font-size: 1.6rem;
+            }
+            
+            .eligibility-section {
+                padding: 20px;
+            }
+            
+            .program-title {
+                font-size: 1.4rem;
+            }
+            
+            .program-content {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Preloader -->
+    <div id="preloader">
+        <div class="loader"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <img src="../images/DSCET-LOGO-.png" alt="">
+            <span class="logo-text">DSCET</span>
+        </div>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html">About</a>
+            <a href="programs.html">Programs</a>
+            <a href="admission.html">Admission</a>
+            <a href="contact.html">Contact</a>
+        </div>
+        <div class="menu-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <header>
+        <div class="container">
+            <h1>DHANALAKSHMI SRINIVASAN</h1>
+            <div class="accent-bar"></div>
+            <p class="header-subtitle">College of Engineering and Technology</p>
+            <p>Admission Eligibility Criteria</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="eligibility-section">
+            <div class="trust-name">
+                ADMISSION ELIGIBILITY
+            </div>
+            
+            <div class="program">
+                <h2 class="program-title"><i class="fas fa-graduation-cap"></i> B.E. / B.Tech. (Regular Entry)</h2>
+                <div class="program-content">
+                    <p>Candidates should have passed the Higher Secondary Examination (10+2) prescribed by the Government of Tamil Nadu with:</p>
+                    <ul>
+                        <li>Mathematics</li>
+                        <li>Physics</li>
+                        <li>Chemistry (Academic Stream)</li>
+                    </ul>
+                    <p>OR</p>
+                    <p>Candidates should have passed the Higher Secondary Examination – Vocational Stream (Vocational Groups in Engineering / Technology) as prescribed by the Government of Tamil Nadu.</p>
+                </div>
+            </div>
+            
+            <div class="program">
+                <h2 class="program-title"><i class="fas fa-exchange-alt"></i> B.E. / B.Tech. (Lateral Entry)</h2>
+                <div class="program-content">
+                    <p>Candidates who possess a Diploma in Engineering / Technology awarded by the State Board of Technical Education, Tamil Nadu or its equivalent are eligible for direct admission to the third semester of B.E. / B.Tech. (in the relevant branch).</p>
+                    <p>OR</p>
+                    <p>Candidates who hold a B.Sc. Degree (10+2+3 stream) with Mathematics as a subject at the B.Sc. level are eligible to apply for admission to the third semester.</p>
+                    <div class="note">
+                        Such candidates shall undergo two additional Engineering subjects in the 3rd & 4th semesters or 4th & 6th semesters, as prescribed by the respective Faculty.
+                    </div>
+                </div>
+            </div>
+            
+            <div class="program">
+                <h2 class="program-title"><i class="fas fa-cogs"></i> M.E. / M.Tech.</h2>
+                <div class="program-content">
+                    <p>Admission is based on entrance examination scores such as:</p>
+                    <ul>
+                        <li>TANCET</li>
+                        <li>CET</li>
+                        <li>GATE</li>
+                    </ul>
+                    <p>conducted by Anna University & the Consortium of Self-Financing Professional, Arts and Science Colleges, Tamil Nadu.</p>
+                </div>
+            </div>
+            
+            <div class="program">
+                <h2 class="program-title"><i class="fas fa-briefcase"></i> Master of Business Administration (MBA)</h2>
+                <div class="program-content">
+                    <p>Admission is based on entrance examination scores such as:</p>
+                    <ul>
+                        <li>MAT</li>
+                        <li>TANCET</li>
+                        <li>CET</li>
+                    </ul>
+                    <p>conducted by Anna University & the Consortium.</p>
+                </div>
+            </div>
+            
+            <div class="program">
+                <h2 class="program-title"><i class="fas fa-laptop-code"></i> Master of Computer Applications (MCA – 2 Years)</h2>
+                <div class="program-content">
+                    <p>Admission is based on TANCET / CET entrance scores conducted by Anna University & the Consortium.</p>
+                </div>
+            </div>
+            
+            <div class="program">
+                <h2 class="program-title"><i class="fas fa-file-alt"></i> Government Orders (G.O.) References</h2>
+                <div class="program-content">
+                    <ul>
+                        <li>G.O. Issued from DOTE for B.E. / B.Tech. Eligibility Norms</li>
+                        <li>G.O. Issued from DOTE for B.E. / B.Tech. Lateral Entry</li>
+                        <li>G.O. Issued from DOTE for Post Graduate Admission</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 DHANALAKSHMI SRINIVASAN Trust. All rights reserved.</p>
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-twitter"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-youtube"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <div class="back-to-top">
+        <i class="fas fa-arrow-up"></i>
+    </div>
+
+    <script>
+        // Preloader
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            setTimeout(() => {
+                preloader.style.opacity = '0';
+                setTimeout(() => {
+                    preloader.style.display = 'none';
+                }, 500);
+            }, 1000);
+        });
+
+        // Mobile Menu Toggle
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', function() {
+            this.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Navbar Scroll Effect
+        const navbar = document.querySelector('.navbar');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Back to Top Button
+        const backToTop = document.querySelector('.back-to-top');
+        window.addEventListener('scroll', function() {
+            if (window.scrollY > 500) {
+                backToTop.classList.add('active');
+            } else {
+                backToTop.classList.remove('active');
+            }
+        });
+
+        backToTop.addEventListener('click', function() {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // Animate elements on scroll
+        const animateOnScroll = function() {
+            const programs = document.querySelectorAll('.program');
+            
+            programs.forEach((program, index) => {
+                const programPosition = program.getBoundingClientRect().top;
+                const screenPosition = window.innerHeight / 1.3;
+                
+                if (programPosition < screenPosition) {
+                    setTimeout(() => {
+                        program.style.opacity = '1';
+                        program.style.transform = 'translateY(0)';
+                    }, index * 200);
+                }
+            });
+        };
+
+        window.addEventListener('scroll', animateOnScroll);
+        // Initial call in case elements are already in view
+        animateOnScroll();
+    </script>
+</body>
+</html>
+
+

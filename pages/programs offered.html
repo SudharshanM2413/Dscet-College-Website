@@ -1,0 +1,486 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Programmes Offered | Dhanalakshmi Srinivasan College</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+    
+    :root {
+      --primary: #6a11cb;
+      --secondary: #2575fc;
+      --accent: #ff7e5f;
+      --light: #f9f9f9;
+      --dark: #333;
+      --shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    body {
+      background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+      color: var(--dark);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 40px;
+      background-attachment: fixed;
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
+    
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    
+    /* Header with animated background */
+    header {
+      text-align: center;
+      padding: 40px 0;
+      background: linear-gradient(120deg, #ff7e5f, #feb47b, #ff7e5f);
+      background-size: 200% 200%;
+      color: white;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+      border-radius: 0 0 15px 15px;
+      position: relative;
+      overflow: hidden;
+      animation: gradientShift 8s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    
+    header::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,128L48,117.3C96,107,192,85,288,112C384,139,480,213,576,218.7C672,224,768,160,864,138.7C960,117,1056,139,1152,149.3C1248,160,1344,160,1392,160L1440,160L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: bottom;
+      opacity: 0.3;
+    }
+    
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3rem;
+      margin-bottom: 10px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: '';
+      position: absolute;
+      bottom: -10px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 100px;
+      height: 4px;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+    
+    /* Tabs styling */
+    .tab-container {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      flex-wrap: wrap;
+      gap: 15px;
+    }
+    
+    .tab {
+      background: white;
+      padding: 15px 30px;
+      cursor: pointer;
+      border-radius: 50px;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+      font-weight: 600;
+      border: 2px solid transparent;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .tab::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      opacity: 0;
+      transition: opacity 0.3s ease;
+      z-index: 0;
+    }
+    
+    .tab span {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .tab:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    }
+    
+    .tab.active {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      border-color: var(--accent);
+    }
+    
+    .tab.active::before {
+      opacity: 1;
+    }
+    
+    /* Content styling */
+    .content {
+      display: none;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.5s ease, transform 0.5s ease;
+      background: white;
+      border-radius: 15px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+      margin-bottom: 30px;
+    }
+    
+    .content.active {
+      display: block;
+      opacity: 1;
+      transform: translateY(0);
+      animation: fadeIn 0.5s ease;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    .program-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 20px 0;
+    }
+    
+    .program-table th {
+      background: linear-gradient(to right, var(--primary), var(--secondary));
+      color: white;
+      padding: 15px;
+      text-align: left;
+    }
+    
+    .program-table tr:nth-child(even) {
+      background-color: #f8f9fa;
+    }
+    
+    .program-table tr:hover {
+      background-color: #e9f0f7;
+      transform: scale(1.01);
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    
+    .program-table td {
+      padding: 15px;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    
+    .program-table .highlight {
+      font-weight: 600;
+      color: var(--primary);
+    }
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 30px;
+      background: linear-gradient(to right, #ff7e5f, #feb47b);
+      color: white;
+      margin-top: 60px;
+      border-radius: 15px 15px 0 0;
+      box-shadow: 0 -4px 12px rgba(0,0,0,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    footer::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 320'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,96L48,112C96,128,192,160,288,186.7C384,213,480,235,576,213.3C672,192,768,128,864,128C960,128,1056,192,1152,192C1248,192,1344,128,1392,96L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z'%3E%3C/path%3E%3C/svg%3E");
+      background-size: cover;
+      background-position: bottom;
+    }
+    
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin-top: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .social-links a {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 45px;
+      height: 45px;
+      background: rgba(255, 255, 255, 0.1);
+      color: white;
+      font-size: 20px;
+      border-radius: 50%;
+      transition: all 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      background: white;
+      color: var(--primary);
+      transform: translateY(-5px) scale(1.1);
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .tab {
+        padding: 12px 25px;
+        font-size: 0.9rem;
+      }
+      
+      .program-table {
+        font-size: 0.9rem;
+      }
+      
+      .program-table th,
+      .program-table td {
+        padding: 10px;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .tab {
+        padding: 10px 20px;
+        font-size: 0.85rem;
+      }
+      
+      .content {
+        padding: 20px 15px;
+      }
+      
+      .program-table {
+        font-size: 0.8rem;
+      }
+      
+      .program-table th,
+      .program-table td {
+        padding: 8px 5px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>Our Programmes</h1>
+      <p>Excellence in Engineering & Technology Education</p>
+    </div>
+  </header>
+  
+  <div class="container">
+    <div class="tab-container">
+      <div class="tab active" onclick="showContent('ug')">
+        <span><i class="fas fa-user-graduate"></i> Under Graduate Programme</span>
+      </div>
+      <div class="tab" onclick="showContent('pg')">
+        <span><i class="fas fa-graduation-cap"></i> Post Graduate Programme</span>
+      </div>
+    </div>
+
+    <div id="ug" class="content active">
+      <h2>Undergraduate Programs</h2>
+      <p>Our undergraduate programs are designed to provide a strong foundation in engineering principles and practical skills.</p>
+      
+      <table class="program-table">
+        <thead>
+          <tr>
+            <th>Programme</th>
+            <th>Duration</th>
+            <th>Intake</th>
+            <th>Eligibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">B.E. Computer Science and Engineering</td>
+            <td>4 Years</td>
+            <td>60</td>
+            <td>10+2 with Physics, Chemistry & Mathematics</td>
+          </tr>
+          <tr>
+            <td class="highlight">B.E. Electronics and Communication Engineering</td>
+            <td>4 Years</td>
+            <td>60</td>
+            <td>10+2 with Physics, Chemistry & Mathematics</td>
+          </tr>
+          <tr>
+            <td class="highlight">B.E. Electrical and Electronics Engineering</td>
+            <td>4 Years</td>
+            <td>60</td>
+            <td>10+2 with Physics, Chemistry & Mathematics</td>
+          </tr>
+          <tr>
+            <td class="highlight">B.E. Mechanical Engineering</td>
+            <td>4 Years</td>
+            <td>60</td>
+            <td>10+2 with Physics, Chemistry & Mathematics</td>
+          </tr>
+          <tr>
+            <td class="highlight">B.E. Civil Engineering</td>
+            <td>4 Years</td>
+            <td>60</td>
+            <td>10+2 with Physics, Chemistry & Mathematics</td>
+          </tr>
+          <tr>
+            <td class="highlight">B.Tech. Information Technology</td>
+            <td>4 Years</td>
+            <td>60</td>
+            <td>10+2 with Physics, Chemistry & Mathematics</td>
+          </tr>
+          <tr>
+            <td class="highlight">B.Tech. Artificial Intelligence and Data Science</td>
+            <td>4 Years</td>
+            <td>60</td>
+            <td>10+2 with Physics, Chemistry & Mathematics</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div id="pg" class="content">
+      <h2>Postgraduate Programs</h2>
+      <p>Our postgraduate programs offer advanced specialization in cutting-edge technologies and research opportunities.</p>
+      
+      <table class="program-table">
+        <thead>
+          <tr>
+            <th>Programme</th>
+            <th>Duration</th>
+            <th>Intake</th>
+            <th>Eligibility</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="highlight">M.E. Computer Science and Engineering</td>
+            <td>2 Years</td>
+            <td>18</td>
+            <td>B.E./B.Tech. in CSE or related discipline</td>
+          </tr>
+          <tr>
+            <td class="highlight">M.E. Applied Electronics</td>
+            <td>2 Years</td>
+            <td>18</td>
+            <td>B.E./B.Tech. in ECE or related discipline</td>
+          </tr>
+          <tr>
+            <td class="highlight">M.E. Power Systems Engineering</td>
+            <td>2 Years</td>
+            <td>18</td>
+            <td>B.E./B.Tech. in EEE or related discipline</td>
+          </tr>
+          <tr>
+            <td class="highlight">M.B.A. Master of Business Administration</td>
+            <td>2 Years</td>
+            <td>60</td>
+            <td>Bachelor's Degree in any discipline</td>
+          </tr>
+          <tr>
+            <td class="highlight">M.C.A. Master of Computer Applications</td>
+            <td>2 Years</td>
+            <td>30</td>
+            <td>Bachelor's Degree with Mathematics</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <footer>
+    <div class="container">
+      <p>&copy; 2023 DHANALAKSHMI SRINIVASAN Trust. All rights reserved.</p>
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-linkedin-in"></i></a>
+        <a href="#"><i class="fab fa-youtube"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function showContent(id) {
+      const tabs = document.querySelectorAll('.tab');
+      const contents = document.querySelectorAll('.content');
+
+      tabs.forEach(tab => tab.classList.remove('active'));
+      contents.forEach(content => content.classList.remove('active'));
+
+      document.querySelector(`.tab[onclick="showContent('${id}')"]`).classList.add('active');
+      document.getElementById(id).classList.add('active');
+    }
+    
+    // Add animation to table rows
+    document.addEventListener('DOMContentLoaded', function() {
+      const tableRows = document.querySelectorAll('.program-table tr');
+      tableRows.forEach((row, index) => {
+        row.style.opacity = '0';
+        row.style.transform = 'translateX(-20px)';
+        row.style.transition = 'opacity 0.5s ease, transform 0.5s ease';
+        
+        setTimeout(() => {
+          row.style.opacity = '1';
+          row.style.transform = 'translateX(0)';
+        }, 100 + (index * 100));
+      });
+    });
+  </script>
+</body>
+</html>
+
+
