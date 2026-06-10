@@ -1,2 +1,28 @@
-# Dscet-College-Website
-Responsive College Website developed using HTML, CSS, and JavaScript, featuring a modern UI, mobile-friendly design, and seamless user experience across all devices. This project is licensed under the MIT License.
+# DSCET College Website
+
+A modern and responsive college website developed to provide an intuitive and engaging experience for students, faculty, and visitors.
+
+## 🌐 Live Demo
+https://dscet-web.web.app/
+
+## 🚀 Features
+- Fully Responsive Design
+- Mobile, Tablet, and Desktop Support
+- Modern User Interface
+- Easy Navigation
+- Fast Loading Pages
+- Organized College Information
+
+## 🛠 Technologies Used
+- HTML5
+- CSS3
+- JavaScript
+- Firebase Hosting
+
+## 📂 GitHub Repository
+https://github.com/SudharshanM2413/Dscet-College-Website
+
+## 👨‍💻 Developer
+Sudharshan M
+
+Aspiring Artificial Intelligence and Data Science Engineer passionate about Web Development, AI, and Software Engineering.
